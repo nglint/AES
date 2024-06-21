@@ -34,9 +34,9 @@ public:
  if(F1[i]==ii)F1i[ii]=i,ii++,i=0 ;//S inv
 }F1i[0x63]=0;
 
-for(int i=1,a=1,a2=0;i<256;i++,a2=0)
+for(char i=1,a=1,a2=0;i<256;i++,a2=0)
 {
-for(int j=1;j<256;j<<=1)
+for(char j=1;j<256;j<<=1)
 {
  a2^=((a&j)*3);
 //////////////////////////////////////////////////////////////////////AES log alog 0x11b
@@ -47,8 +47,8 @@ i2as[a2]=i;
 a=a2;
 }unsigned   short m[7]={0};
 static unsigned char k[7]{2,3,9,11,13,14};
-for(int i=0;i<256;i++){
-for(int z=0;z<6;z++){
+for(char i=0;i<256;i++){
+for(char z=0;z<6;z++){
 if(i) {
 m[z]=(i2as[i]+i2as[k[z]]);     /////////////////mix////////
 if(m[z]==510)m[z]=255;
@@ -80,7 +80,7 @@ gg+=4;
 asm("xchg %0, %1;\n": "=r"(gg[0]), "+m"(gg[3]): "0"(gg[0]));
 asm("xchg %0, %1;\n": "=r"(gg[1]), "+m"(gg[2]): "0"(gg[1]));
 w[3]=key[3];
-for(int i=0,k=0;i<40;i+=4,k++)
+for(char i=0,k=0;i<40;i+=4,k++)
 {int f2=w[3+i];
 asm("roll %1,%0":"+g"(f2):"cI"((unsigned char)8));
 unsigned char  *kp=(unsigned char*)&f2;
@@ -121,10 +121,10 @@ free(w);
    {
    u=(unsigned char*)&w[0]+3;
 
-for(int I=0,x=0;I<11;I++){
-for(int i=0;i<4;i++)
+for(char I=0,x=0;I<11;I++){
+for(char i=0;i<4;i++)
 {
-   for(int ii=0;ii<16;ii+=4,x++)
+   for(char ii=0;ii<16;ii+=4,x++)
    {
       l[x]= u[ii-i];
 
