@@ -142,7 +142,7 @@ public:
 
 
 
-  void  decrypt(unsigned char *mm2,unsigned char *y)
+  void  decrypt(unsigned char *mm2,unsigned char *y)//mm2 -> key    y ->data
     {unsigned char *l=(unsigned char*) malloc(sizeof(char )*255),mm[17];
   for(char t=0;t<16;t++)asm("mov %0, %1;\n": "=r"(mm2[t]), "+m"(mm[t]): "0"(mm2[t]));
      keyex(mm,l,1)  ;
@@ -209,7 +209,8 @@ asm("xchg %0, %1;\n": "=r"(y[11]), "+m"(y[14]): "0"(y[11]));
 
 free(l);
     }///////////////////////////////////////////////////////////////////////////////////////////////
-   void encrypt(unsigned char *mm2, unsigned char *y)
+
+   void encrypt(unsigned char *mm2, unsigned char *y)//m2 -> key y -> ciphertext
     {unsigned char *l=(unsigned char*) malloc(sizeof(char )*255),mm[17];
   for(char t=0;t<16;t++)asm("mov %0, %1;\n": "=r"(mm2[t]), "+m"(mm[t]): "0"(mm2[t]));
      keyex(mm,l,0)  ;
