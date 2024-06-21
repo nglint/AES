@@ -29,14 +29,14 @@ public:
 
    AES()
    {
-      for(int i=0,ii=0;ii<256;i++)
+      for(unsigned short i=0,ii=0;ii<256;i++)
 {
  if(F1[i]==ii)F1i[ii]=i,ii++,i=0 ;//S inv
 }F1i[0x63]=0;
 
-for(char i=1,a=1,a2=0;i<256;i++,a2=0)
+for(unsigned short i=1,a=1,a2=0;i<256;i++,a2=0)
 {
-for(char j=1;j<256;j<<=1)
+for(unsigned short j=1;j<256;j<<=1)
 {
  a2^=((a&j)*3);
 //////////////////////////////////////////////////////////////////////AES log alog 0x11b
@@ -47,7 +47,7 @@ i2as[a2]=i;
 a=a2;
 }unsigned   short m[7]={0};
 static unsigned char k[7]{2,3,9,11,13,14};
-for(char i=0;i<256;i++){
+for(unsigned short i=0;i<256;i++){
 for(char z=0;z<6;z++){
 if(i) {
 m[z]=(i2as[i]+i2as[k[z]]);     /////////////////mix////////
@@ -103,11 +103,11 @@ free(w);
    sd(int * w,unsigned char *u, unsigned char *l)
    {
    u=(unsigned char*)&w[40]+3;
-
-    for(int I=0,x=0;I<11;I++){
-      for(int i=0;i<4;i++)
+unsigned short x=0;
+    for(char I=0;I<11;I++){
+      for(char i=0;i<4;i++)
        {
-        for(int ii=0;ii<16;ii+=4,x++)
+        for(char ii=0;ii<16;ii+=4,x++)
         {
           l[x]= u[ii-i];
         }
@@ -120,8 +120,8 @@ free(w);
    se(int * w,unsigned char *u, unsigned char *l)
    {
    u=(unsigned char*)&w[0]+3;
-
-for(char I=0,x=0;I<11;I++){
+unsigned short x=0;
+for(char I=0;I<11;I++){
 for(char i=0;i<4;i++)
 {
    for(char ii=0;ii<16;ii+=4,x++)
